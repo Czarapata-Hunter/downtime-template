@@ -1,0 +1,131 @@
+.header {
+  background-color: grey;
+  width: 100vw;
+  top: 0;
+  margin: 0;
+  border-bottom: 3px solid;
+  border-color: black;
+}
+
+.title {
+  color: white;
+  letter-spacing: 0.2rem;
+}
+
+body {
+  margin: 0;
+  /* background-image: url(''); */
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+}
+
+h1 {
+  margin: 0;
+}
+
+.header-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  margin-left: 1.5rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+  box-shadow: inset 0px 1px 0px 0px #a4e271;
+  background: linear-gradient(to bottom, #304401 5%, #283804 100%);
+  background-color: #89c403;
+  border-radius: 6px;
+  border: 1px solid #74b807;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.8rem;
+  padding: 18px 37px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #528009;
+}
+
+.reset {
+  position: fixed;
+  top: 7%;
+  left: 1%;
+}
+
+.rules {
+  position: fixed;
+  top: 7%;
+  right: 1%;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+
+  border-top: 3px solid black;
+
+  background-color: grey;
+  width: 100vw;
+}
+
+.choices-btns {
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.btn-left {
+  position: fixed;
+  left: 1%;
+  bottom: 1%;
+}
+
+.btn-right {
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+}
+
+.rules-modal {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background: linear-gradient(to top left, black, white);
+  padding: 6rem;
+  border-radius: 5px;
+  border: 3px solid black;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  font-weight: bold;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.hidden {
+  display: none;
+}
