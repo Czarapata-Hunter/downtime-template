@@ -308,13 +308,11 @@ btnCrouch.addEventListener('click', function () {
 
   if (dice > 4) {
     successCount++;
-    choicesPrevious.textContent =
-      'SUCCESS - You CROUCH your way forward, and you see the animal! Are you skilled enough to get the kill?';
+    choicesPrevious.textContent = `SUCCESS - You CROUCH your way forward, and you see the ${animal}! Are you skilled enough to get the kill?`;
     choicesPrompt.classList.add('hidden');
   } else {
     failCount++;
-    choicesPrevious.textContent =
-      'FAILURE - As you CROUCH, you barely see the animal as it takes off!';
+    choicesPrevious.textContent = `FAILURE - As you CROUCH, you barely see the ${animal} as it takes off!`;
     choicesPrompt.classList.add('hidden');
   }
 
@@ -330,44 +328,36 @@ btnClimb.addEventListener('click', function () {
 
   if (dice > 4) {
     successCount++;
-    choicesPrevious.textContent =
-      'SUCCESS - You CLIMB the nearest tree, and it does not take long for the animal to approach!';
+    choicesPrevious.textContent = `SUCCESS - You CLIMB the nearest tree, and it does not take long for the ${animal} to approach!`;
     choicesPrompt.classList.add('hidden');
   } else {
     failCount++;
-    choicesPrevious.textContent =
-      'FAILURE - You almost lose your grip on the branch as you CLIMB, but you see the animal running away in fear. Shoot before it is too late!';
+    choicesPrevious.textContent = `FAILURE - You almost lose your grip on the branch as you CLIMB, but you see the ${animal} running away in fear. Shoot before it is too late!`;
     choicesPrompt.classList.add('hidden');
   }
 
   btnCrouch.classList.add('hidden');
   btnClimb.classList.add('hidden');
   btnShoot.classList.remove('hidden');
-  console.log(dice);
-  console.log(successCount, failCount);
 });
 
 // SHOOT 1st
 btnShoot.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 20);
   if (dice === 20) {
-    choicesPrevious.textContent =
-      'CRITICAL STRIKE! - Your shot was so skilled you can either choose to incapacitate the animal enough to CAPTURE it, or strike to for an immediate KILL!';
+    choicesPrevious.textContent = `CRITICAL STRIKE! - Your shot was so skilled you can either choose to incapacitate the ${animal} enough to CAPTURE it, or strike to for an immediate KILL!`;
     btnCapture.classList.remove('hidden');
     btnKill.classList.remove('hidden');
     btnShoot.classList.add('hidden');
   } else if (dice > 15) {
-    choicesPrevious.textContent =
-      'Your is aim true, and you successfully kill the animal!';
+    choicesPrevious.textContent = `Your is aim true, and you successfully kill the ${animal}!`;
     btnShoot.classList.add('hidden');
   } else if (dice > 1) {
-    choicesPrevious.textContent =
-      'You hit the animal, but it is not enough to get a clean kill! Take a shot before it disappears!';
+    choicesPrevious.textContent = `You hit the ${animal}, but it is not enough to get a clean kill! Take a shot before it disappears!`;
     btnShoot.classList.add('hidden');
     btnShootAgain.classList.remove('hidden');
   } else {
-    choicesPrevious.textContent =
-      'CRITICAL FAILURE! - You miss by more than you care to admit, and the animal immediately leaves before you can even react.';
+    choicesPrevious.textContent = `CRITICAL FAILURE! - You miss by more than you care to admit, and the ${animal} immediately leaves before you can even react.`;
     btnShoot.classList.add('hidden');
   }
 });
@@ -376,12 +366,10 @@ btnShoot.addEventListener('click', function () {
 btnShootAgain.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 20);
   if (dice >= 7) {
-    choicesPrevious.textContent =
-      'Success! You manage to hit the animal as it sprints away, dropping it immediately.';
+    choicesPrevious.textContent = `Success! You manage to hit the ${animal} as it sprints away, dropping it immediately.`;
     btnShootAgain.classList.add('hidden');
   } else {
-    choicesPrevious.textContent =
-      'Unfortunately, your second shot misses and the animal escapes. No meat today for you.';
+    choicesPrevious.textContent = `Unfortunately, your second shot misses and the ${animal} escapes. No meat today for you.`;
     btnShootAgain.classList.add('hidden');
   }
 });
