@@ -32,6 +32,16 @@ const overlay = document.querySelector('.overlay');
 //SETUP
 let successCount, failCount, playing, rewardsArray; // <= NamingChange
 
+const tiny = ['Rat', 'Frog', 'Lizard', 'Weasel', 'Mouse'];
+
+const small = ['Rabbit', 'Grouse', 'Badger', 'Giant Rat', 'Small Fox'];
+
+const medium = ['Deer', 'Goat', 'Ram', 'Cougar', 'Large Fox'];
+
+const large = ['Black Bear', 'Wolf', 'Elk', 'Boar', 'Giant Goat'];
+
+const huge = ['Giant Elk', 'Moose', 'Giant Boar', 'Kodiak Bear', 'Dire Wolf'];
+
 //RESET
 const reset = () => {
   successCount = 0;
