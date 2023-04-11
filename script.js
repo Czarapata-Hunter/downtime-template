@@ -2,6 +2,7 @@
 
 //SELECT DIFFERENT ELEMENTS
 const title = document.querySelector('.header-title');
+const body = document.getElementsByTagName('body')[0];
 //BUTTONS
 const btnReset = document.querySelector('.btn-reset');
 const btnRules = document.querySelector('.btn-rules');
@@ -74,8 +75,15 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+// STYLING
+const successFailStyle = () => {
+  choicesPrevious.classList.remove('success');
+  choicesPrevious.classList.remove('failure');
+};
+
 //BEGIN MINI-GAME
 btnStart.addEventListener('click', function () {
+  body.style.backgroundImage = "url('/Photos/backgrounds/leftRight.jpg')";
   btnStart.classList.add('hidden');
   btnLeft.classList.remove('hidden');
   btnRight.classList.remove('hidden');
@@ -89,9 +97,11 @@ btnStart.addEventListener('click', function () {
 // LEFT
 btnLeft.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/upDown.jpg')";
 
   if (dice > 2) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
       'SUCCESS - Taking the LEFT path, you quickly spot some tracks';
     choicesPrevious.classList.remove('hidden');
@@ -99,6 +109,7 @@ btnLeft.addEventListener('click', function () {
       'The path up ahead splits, do you continue UP the path, or head DOWN?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
       'FAILURE - Taking the LEFT path, you do not spot any tracks';
     choicesPrevious.classList.remove('hidden');
@@ -115,9 +126,11 @@ btnLeft.addEventListener('click', function () {
 // RIGHT
 btnRight.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/upDown.jpg')";
 
   if (dice > 2) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
       'SUCCESS - Taking the RIGHT path, you quickly spot some tracks.';
     choicesPrevious.classList.remove('hidden');
@@ -125,6 +138,7 @@ btnRight.addEventListener('click', function () {
       'The path up ahead splits, do you continue UP the path, or head DOWN?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
       'FAILURE - Taking the RIGHT path, you do not spot any tracks.';
     choicesPrevious.classList.remove('hidden');
@@ -142,15 +156,19 @@ btnRight.addEventListener('click', function () {
 // UP
 btnUp.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/riverMountain.jpg')";
+  successFailStyle();
 
   if (dice > 2) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
       'SUCCESS - Taking the path leading UP, you spot some snapped branches. Something has passed through here.';
     choicesPrompt.textContent =
       'Unfortunately, you do not pick up any other tracks. Did the animal head towards the RIVER or go up the MOUNTAIN?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
       'FAILURE - You take the path UP, but do not spot any animal tracks.';
     choicesPrompt.textContent =
@@ -166,15 +184,19 @@ btnUp.addEventListener('click', function () {
 // DOWN
 btnDown.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  successFailStyle();
+  body.style.backgroundImage = "url('/Photos/backgrounds/riverMountain.jpg')";
 
   if (dice > 2) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
       'SUCCESS - Taking the path leading DOWN, you spot thick fur. Something has passed through here.';
     choicesPrompt.textContent =
       'Unfortunately, you do not see anymore fur as you continue. Did the animal head towards the RIVER or go up the MOUNTAIN?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
       'FAILURE - You take the path DOWN, but see no signs of animals passing through.';
     choicesPrompt.textContent =
@@ -191,15 +213,19 @@ btnDown.addEventListener('click', function () {
 // RIVER
 btnRiver.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/river.jpg')";
+  successFailStyle();
 
   if (dice > 2) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
       'SUCCESS - Heading towards the RIVER, you smell an animal that passed through here not long ago.';
     choicesPrompt.textContent =
       'As you approach the River, smell quickly dissipates. Do you proceed FAST to follow the animal, or take it SLOW incase it is close?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
       'FAILURE - You head towards the river, but any chance of smelling an animal is blocked by the smell of fish.';
     choicesPrompt.textContent =
@@ -215,15 +241,19 @@ btnRiver.addEventListener('click', function () {
 // MOUNTAIN
 btnMtn.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/mountain.jpg')";
+  successFailStyle();
 
   if (dice > 2) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
       'SUCCESS - Heading up the MOUNTAIN, you hear rocks shifting above you. Something is definitely up there!';
     choicesPrompt.textContent =
       'As you climb the MOUNTAIN, do you move FAST to close the distance between whatever is above you, or do you move SLOW as to not scare it?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
       'FAILURE - You head up the MOUNTAIN, but only hear the sounds of the wind rushing through the trees. Hopefully your scent is not carried too far on the wind.';
     choicesPrompt.textContent =
@@ -240,19 +270,23 @@ btnMtn.addEventListener('click', function () {
 // FAST
 btnFast.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/climbBush.jpg')";
+  successFailStyle();
 
   if (dice > 3) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
-      'SUCCESS - You move FAST up the mountain taking care not to slip. You see birds take flight off in the distance. Something definitely moved up ahead!';
+      'SUCCESS - You move FAST along the path. You see birds take flight off in the distance. Something definitely moved up ahead!';
     choicesPrompt.textContent =
       'Knowing something is ahead, do you continue at a CROUCH as to remain more hidden, or do you CLIMB the nearest tree and wait for it to come to you?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
-      'FAILURE - You slip and slide your way up the mountain as rocks shift under your feet. Hopefully you did not scare any potential animals that were ahead.';
+      'FAILURE - Your feet slip on the muddy path. Hopefully you did not scare any potential animals that were ahead.';
     choicesPrompt.textContent =
-      'Hoping something is around you, do you CROUCH and continue forward, or do you CLIMB the nearest tree and wait for something to approach you?';
+      'Hoping something is around you, do you CROUCH in the bush or do you CLIMB the nearest tree and wait for something to approach you?';
   }
 
   btnFast.classList.add('hidden');
@@ -264,19 +298,23 @@ btnFast.addEventListener('click', function () {
 // SLOW
 btnSlow.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/climbBush.jpg')";
+  successFailStyle();
 
   if (dice > 3) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent =
-      'SUCCESS - You move SLOW up slowly55, listening intently for any signs of animal life. Luckily, you hear some twigs snap up ahead!';
+      'SUCCESS - You move SLOW up slowly, listening intently for any signs of animal life. Luckily, you hear some twigs snap up ahead!';
     choicesPrompt.textContent =
       'Hearing the footsteps of an animal ahead, do you CROUCH and continue forward, or do you CLIMB the nearest tree, incase it is approaching you?';
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent =
-      'FAILURE - You fear you may have moved to SLOW for your own good, and you hear no signs of life around you, besides your own beating heart.';
+      'FAILURE - You fear you may have moved too SLOW for your own good, and you hear no signs of life around you, besides your own beating heart.';
     choicesPrompt.textContent =
-      'Do you CROUCH and continue forward, hoping to hear something over your own heart beat, or do you CLIMB the nearest tree and hope something passes below you soon enough?';
+      'Do you CROUCH and continue forward, or do you CLIMB the nearest tree and hope something passes below you soon enough?';
   }
 
   btnFast.classList.add('hidden');
@@ -304,14 +342,18 @@ const giveAnimal = () => {
 // CROUCH
 btnCrouch.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/low.jpg')";
   giveAnimal();
+  successFailStyle();
 
   if (dice > 4) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent = `SUCCESS - You CROUCH your way forward, and you see the ${animal}! Are you skilled enough to get the kill?`;
     choicesPrompt.classList.add('hidden');
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `FAILURE - As you CROUCH, you barely see the ${animal} as it takes off!`;
     choicesPrompt.classList.add('hidden');
   }
@@ -324,14 +366,18 @@ btnCrouch.addEventListener('click', function () {
 // CLIMB
 btnClimb.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
+  body.style.backgroundImage = "url('/Photos/backgrounds/high.jpg')";
   giveAnimal();
+  successFailStyle();
 
   if (dice > 4) {
     successCount++;
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent = `SUCCESS - You CLIMB the nearest tree, and it does not take long for the ${animal} to approach!`;
     choicesPrompt.classList.add('hidden');
   } else {
     failCount++;
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `FAILURE - You almost lose your grip on the branch as you CLIMB, but you see the ${animal} running away in fear. Shoot before it is too late!`;
     choicesPrompt.classList.add('hidden');
   }
@@ -344,19 +390,25 @@ btnClimb.addEventListener('click', function () {
 // SHOOT 1st
 btnShoot.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 20);
+  successFailStyle();
+
   if (dice === 20) {
+    choicesPrevious.classList.add('critical');
     choicesPrevious.textContent = `CRITICAL STRIKE! - Your shot was so skilled you can either choose to incapacitate the ${animal} enough to CAPTURE it, or strike to for an immediate KILL!`;
     btnCapture.classList.remove('hidden');
     btnKill.classList.remove('hidden');
     btnShoot.classList.add('hidden');
   } else if (dice > 15) {
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent = `Your is aim true, and you successfully kill the ${animal}!`;
     btnShoot.classList.add('hidden');
   } else if (dice > 1) {
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `You hit the ${animal}, but it is not enough to get a clean kill! Take a shot before it disappears!`;
     btnShoot.classList.add('hidden');
     btnShootAgain.classList.remove('hidden');
   } else {
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `CRITICAL FAILURE! - You miss by more than you care to admit, and the ${animal} immediately leaves before you can even react.`;
     btnShoot.classList.add('hidden');
   }
@@ -365,10 +417,14 @@ btnShoot.addEventListener('click', function () {
 // SHOOT 2nd
 btnShootAgain.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 20);
+  successFailStyle();
+
   if (dice >= 7) {
+    choicesPrevious.classList.add('success');
     choicesPrevious.textContent = `Success! You manage to hit the ${animal} as it sprints away, dropping it immediately.`;
     btnShootAgain.classList.add('hidden');
   } else {
+    choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `Unfortunately, your second shot misses and the ${animal} escapes. No meat today for you.`;
     btnShootAgain.classList.add('hidden');
   }
