@@ -61,16 +61,21 @@ h1 {
   -moz-box-shadow: 4px 4px 5px -1px rgba(72, 72, 72, 0.75) inset;
 }
 
-.reset {
+.btn-reset {
   position: fixed;
   top: 7%;
   left: 1%;
 }
 
-.rules {
+.btn-rules {
   position: fixed;
   top: 7%;
   right: 1%;
+}
+
+.btn-start {
+  position: fixed;
+  bottom: 5%;
 }
 
 .choices {
@@ -99,6 +104,54 @@ h1 {
 }
 
 .btn-right {
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+}
+
+.btn-up {
+  position: fixed;
+  left: 1%;
+  bottom: 1%;
+}
+
+.btn-down {
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+}
+
+.btn-river {
+  position: fixed;
+  left: 1%;
+  bottom: 1%;
+}
+
+.btn-mtn {
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+}
+
+.btn-fast {
+  position: fixed;
+  left: 1%;
+  bottom: 1%;
+}
+
+.btn-slow {
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+}
+
+.btn-crouch {
+  position: fixed;
+  left: 1%;
+  bottom: 1%;
+}
+
+.btn-climb {
   position: fixed;
   right: 1%;
   bottom: 1%;
