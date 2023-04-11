@@ -6,6 +6,8 @@ const title = document.querySelector('.header-title');
 const btnReset = document.querySelector('.btn-reset');
 const btnRules = document.querySelector('.btn-rules');
 const btnStart = document.querySelector('.btn-start');
+const btnShoot = document.querySelector('.btn-shoot');
+const btnShootAgain = document.querySelector('.btn-shoot-again');
 const btnLeft = document.querySelector('.btn-left');
 const btnRight = document.querySelector('.btn-right');
 const btnUp = document.querySelector('.btn-up');
@@ -16,6 +18,8 @@ const btnFast = document.querySelector('.btn-fast');
 const btnSlow = document.querySelector('.btn-slow');
 const btnCrouch = document.querySelector('.btn-crouch');
 const btnClimb = document.querySelector('.btn-climb');
+const btnCapture = document.querySelector('.btn-capture');
+const btnKill = document.querySelector('.btn-kill');
 
 //CHOICES
 const choicesPrevious = document.querySelector('.choices-previous');
@@ -253,7 +257,7 @@ btnSlow.addEventListener('click', function () {
   if (dice > 3) {
     successCount++;
     choicesPrevious.textContent =
-      'SUCCESS - You move SLOW up slowly, listening intently for any signs of animal life. Luckily, you hear some twigs snap up ahead!';
+      'SUCCESS - You move SLOW up slowly55, listening intently for any signs of animal life. Luckily, you hear some twigs snap up ahead!';
     choicesPrompt.textContent =
       'Hearing the footsteps of an animal ahead, do you CROUCH and continue forward, or do you CLIMB the nearest tree, incase it is approaching you?';
   } else {
@@ -270,4 +274,91 @@ btnSlow.addEventListener('click', function () {
   btnClimb.classList.remove('hidden');
   console.log(dice);
   console.log(successCount, failCount);
+});
+
+// CHOICES 5
+// CROUCH
+
+btnCrouch.addEventListener('click', function () {
+  const dice = Math.ceil(Math.random() * 4);
+
+  if (dice > 3) {
+    successCount++;
+    choicesPrevious.textContent =
+      'SUCCESS - You CROUCH your way forward, and you see the animal! Are you skilled enough to get the kill?';
+    choicesPrompt.classList.add('hidden');
+  } else {
+    failCount++;
+    choicesPrevious.textContent =
+      'FAILURE - As you CROUCH, you barely see the animal as it takes off!';
+    choicesPrompt.classList.add('hidden');
+  }
+
+  btnCrouch.classList.add('hidden');
+  btnClimb.classList.add('hidden');
+  btnShoot.classList.remove('hidden');
+  console.log(dice);
+  console.log(successCount, failCount);
+});
+
+// CLIMB
+btnClimb.addEventListener('click', function () {
+  const dice = Math.ceil(Math.random() * 4);
+
+  if (dice > 3) {
+    successCount++;
+    choicesPrevious.textContent =
+      'SUCCESS - You CLIMB the nearest tree, and it does not take long for the animal to approach!';
+    choicesPrompt.classList.add('hidden');
+  } else {
+    failCount++;
+    choicesPrevious.textContent =
+      'FAILURE - You almost lose your grip on the branch as you CLIMB, but you see the animal running away in fear. Shoot before it is too late!';
+    choicesPrompt.classList.add('hidden');
+  }
+
+  btnCrouch.classList.add('hidden');
+  btnClimb.classList.add('hidden');
+  btnShoot.classList.remove('hidden');
+  console.log(dice);
+  console.log(successCount, failCount);
+});
+
+// SHOOT 1st
+btnShoot.addEventListener('click', function () {
+  const dice = Math.ceil(Math.random() * 20);
+  if (dice === 20) {
+    choicesPrevious.textContent =
+      'CRITICAL STRIKE! - Your shot was so skilled you can either choose to incapacitate the animal enough to CAPTURE it, or strike to for an immediate KILL!';
+    btnCapture.classList.remove('hidden');
+    btnKill.classList.remove('hidden');
+    btnShoot.classList.add('hidden');
+  } else if (dice > 15) {
+    choicesPrevious.textContent =
+      'Your is aim true, and you successfully kill the animal!';
+    btnShoot.classList.add('hidden');
+  } else if (dice > 1) {
+    choicesPrevious.textContent =
+      'You hit the animal, but it is not enough to get a clean kill! Take a shot before it disappears!';
+    btnShoot.classList.add('hidden');
+    btnShootAgain.classList.remove('hidden');
+  } else {
+    choicesPrevious.textContent =
+      'CRITICAL FAILURE! - You miss by more than you care to admit, and the animal immediately leaves before you can even react.';
+    btnShoot.classList.add('hidden');
+  }
+});
+
+// SHOOT 2nd
+btnShootAgain.addEventListener('click', function () {
+  const dice = Math.ceil(Math.random() * 20);
+  if (dice >= 7) {
+    choicesPrevious.textContent =
+      'Success! You manage to hit the animal as it sprints away, dropping it immediately.';
+    btnShootAgain.classList.add('hidden');
+  } else {
+    choicesPrevious.textContent =
+      'Unfortunately, your second shot misses and the animal escapes. No meat today for you.';
+    btnShootAgain.classList.add('hidden');
+  }
 });

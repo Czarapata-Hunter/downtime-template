@@ -78,6 +78,16 @@ h1 {
   bottom: 5%;
 }
 
+.btn-shoot {
+  position: fixed;
+  bottom: 11%;
+}
+
+.btn-shoot-again {
+  position: fixed;
+  bottom: 11%;
+}
+
 .choices {
   display: flex;
   flex-direction: column;
@@ -152,6 +162,18 @@ h1 {
 }
 
 .btn-climb {
+  position: fixed;
+  right: 1%;
+  bottom: 1%;
+}
+
+.btn-capture {
+  position: fixed;
+  left: 1%;
+  bottom: 1%;
+}
+
+.btn-kill {
   position: fixed;
   right: 1%;
   bottom: 1%;
