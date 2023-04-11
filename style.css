@@ -5,19 +5,21 @@
   margin: 0;
   border-bottom: 3px solid;
   border-color: rgb(154, 22, 22);
+  z-index: 1000;
 }
 
 .header-title {
   color: white;
   letter-spacing: 0.2rem;
+  z-index: 1000;
 }
 
 body {
   margin: 0;
-  /* background-image: url(''); */
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
   background-image: url(Photos/backgrounds/beginHunt.jpg);
+  z-index: 100;
 }
 
 h1 {
@@ -28,6 +30,15 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 3rem;
   margin-left: 1.5rem;
+  z-index: 100;
+}
+
+.displayed-animal {
+  display: flex;
+  scale: 50%;
+  /* position: absolute; */
+  justify-content: space-around;
+  z-index: 6;
 }
 
 .btn {
@@ -36,17 +47,20 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
 
   box-shadow: inset 0px 1px 0px 0px #a4e271;
-  background: linear-gradient(to bottom, #304401 5%, #283804 100%);
-  background-color: #89c403;
+  background: linear-gradient(to bottom, #470404 5%, #b31c1c 100%);
+  /* background-color: #89c403; */
+  background-color: #ba1f1f;
   border-radius: 6px;
-  border: 1px solid #74b807;
+  border: 1px solid #ffffff;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-size: 1.8rem;
-  padding: 18px 37px;
+  /* padding: 18px 37px; */
+  padding: 15px 25px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #528009;
+  z-index: 100;
 }
 
 .btn:hover {
@@ -66,27 +80,32 @@ h1 {
   position: fixed;
   top: 7%;
   left: 1%;
+  z-index: 100;
 }
 
 .btn-rules {
   position: fixed;
   top: 7%;
   right: 1%;
+  z-index: 100;
 }
 
 .btn-start {
   position: fixed;
   bottom: 5%;
+  z-index: 100;
 }
 
 .btn-shoot {
   position: fixed;
   bottom: 11%;
+  z-index: 100;
 }
 
 .btn-shoot-again {
   position: fixed;
   bottom: 11%;
+  z-index: 100;
 }
 
 .choices {
@@ -101,89 +120,104 @@ h1 {
 
   background-color: rgba(0, 0, 0, 0.821);
   width: 100vw;
+  z-index: 100;
 }
 
 .choices-btns {
   margin-bottom: 1%;
   margin-top: 1%;
+  z-index: 100;
 }
 
 .btn-left {
   position: fixed;
   left: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-right {
   position: fixed;
   right: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-up {
   position: fixed;
   left: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-down {
   position: fixed;
   right: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-river {
   position: fixed;
   left: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-mtn {
   position: fixed;
   right: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-fast {
   position: fixed;
   left: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-slow {
   position: fixed;
   right: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-crouch {
   position: fixed;
   left: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-climb {
   position: fixed;
   right: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-capture {
   position: fixed;
   left: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .btn-kill {
   position: fixed;
   right: 1%;
   bottom: 1%;
+  z-index: 100;
 }
 
 .choices-previous {
   font-weight: bold;
   font-size: 1.2rem;
   word-wrap: normal;
+  z-index: 100;
 }
 
 .choices-prompt {
@@ -191,6 +225,7 @@ h1 {
   font-size: 1.2rem;
   word-wrap: normal;
   color: white;
+  z-index: 100;
 }
 .success {
   color: #597c1f;
@@ -234,7 +269,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(132, 12, 12, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
 }

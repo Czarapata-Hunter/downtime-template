@@ -3,6 +3,8 @@
 //SELECT DIFFERENT ELEMENTS
 const title = document.querySelector('.header-title');
 const body = document.getElementsByTagName('body')[0];
+// const animalDisplay = document.querySelector('.animal-display');
+const displayedAnimal = document.querySelector('.displayed-animal');
 //BUTTONS
 const btnReset = document.querySelector('.btn-reset');
 const btnRules = document.querySelector('.btn-rules');
@@ -50,6 +52,7 @@ const reset = () => {
   rewardsArray = [];
   playing = true;
   animal = '';
+  displayedAnimal.classList.add('hidden');
 };
 
 reset();
@@ -342,9 +345,12 @@ const giveAnimal = () => {
 // CROUCH
 btnCrouch.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
-  body.style.backgroundImage = "url('/Photos/backgrounds/low.jpg')";
   giveAnimal();
   successFailStyle();
+  body.style.backgroundImage = "url('/Photos/backgrounds/low.jpg')";
+  overlay.classList.remove('hidden');
+  displayedAnimal.classList.remove('hidden');
+  displayedAnimal.src = `/Photos/animals/${animal}.png`;
 
   if (dice > 4) {
     successCount++;
@@ -394,7 +400,7 @@ btnShoot.addEventListener('click', function () {
 
   if (dice === 20) {
     choicesPrevious.classList.add('critical');
-    choicesPrevious.textContent = `CRITICAL STRIKE! - Your shot was so skilled you can either choose to incapacitate the ${animal} enough to CAPTURE it, or strike to for an immediate KILL!`;
+    choicesPrevious.textContent = `CRITICAL STRIKE! - Your shot was so skilled you can either choose to incapacitate the ${animal} enough to CAPTURE it, or strike for an immediate KILL!`;
     btnCapture.classList.remove('hidden');
     btnKill.classList.remove('hidden');
     btnShoot.classList.add('hidden');
