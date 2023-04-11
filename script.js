@@ -30,7 +30,7 @@ const overlay = document.querySelector('.overlay');
 //PICTURES
 
 //SETUP
-let successCount, failCount, playing, rewardsArray; // <= NamingChange
+let successCount, failCount, playing, rewardsArray, animal; // <= NamingChange
 
 const tiny = ['Rat', 'Frog', 'Lizard', 'Weasel', 'Mouse'];
 
@@ -48,6 +48,7 @@ const reset = () => {
   failCount = 0;
   rewardsArray = [];
   playing = true;
+  animal = '';
 };
 
 reset();
@@ -87,7 +88,7 @@ btnStart.addEventListener('click', function () {
 // CHOICES 1
 // LEFT
 btnLeft.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 2) {
     successCount++;
@@ -113,7 +114,7 @@ btnLeft.addEventListener('click', function () {
 
 // RIGHT
 btnRight.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 2) {
     successCount++;
@@ -140,7 +141,7 @@ btnRight.addEventListener('click', function () {
 // CHOICES 2
 // UP
 btnUp.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 2) {
     successCount++;
@@ -164,7 +165,7 @@ btnUp.addEventListener('click', function () {
 
 // DOWN
 btnDown.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 2) {
     successCount++;
@@ -189,7 +190,7 @@ btnDown.addEventListener('click', function () {
 //CHOICES 3
 // RIVER
 btnRiver.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 2) {
     successCount++;
@@ -213,7 +214,7 @@ btnRiver.addEventListener('click', function () {
 
 // MOUNTAIN
 btnMtn.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 2) {
     successCount++;
@@ -238,7 +239,7 @@ btnMtn.addEventListener('click', function () {
 // CHOICES 4
 // FAST
 btnFast.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 3) {
     successCount++;
@@ -262,7 +263,7 @@ btnFast.addEventListener('click', function () {
 
 // SLOW
 btnSlow.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
 
   if (dice > 3) {
     successCount++;
@@ -282,17 +283,30 @@ btnSlow.addEventListener('click', function () {
   btnSlow.classList.add('hidden');
   btnCrouch.classList.remove('hidden');
   btnClimb.classList.remove('hidden');
-  console.log(dice);
-  console.log(successCount, failCount);
 });
 
 // CHOICES 5
+// GIVE ANIMAL
+const giveAnimal = () => {
+  if (successCount === 5) {
+    animal = huge[Math.floor(Math.random() * huge.length)];
+  } else if (successCount === 4) {
+    animal = large[Math.floor(Math.random() * large.length)];
+  } else if (successCount === 3) {
+    animal = medium[Math.floor(Math.random() * medium.length)];
+  } else if (successCount === 2) {
+    animal = small[Math.floor(Math.random() * small.length)];
+  } else {
+    animal = tiny[Math.floor(Math.random() * tiny.length)];
+  }
+};
+
 // CROUCH
-
 btnCrouch.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
+  giveAnimal();
 
-  if (dice > 3) {
+  if (dice > 4) {
     successCount++;
     choicesPrevious.textContent =
       'SUCCESS - You CROUCH your way forward, and you see the animal! Are you skilled enough to get the kill?';
@@ -307,15 +321,14 @@ btnCrouch.addEventListener('click', function () {
   btnCrouch.classList.add('hidden');
   btnClimb.classList.add('hidden');
   btnShoot.classList.remove('hidden');
-  console.log(dice);
-  console.log(successCount, failCount);
 });
 
 // CLIMB
 btnClimb.addEventListener('click', function () {
-  const dice = Math.ceil(Math.random() * 4);
+  const dice = Math.ceil(Math.random() * 5);
+  giveAnimal();
 
-  if (dice > 3) {
+  if (dice > 4) {
     successCount++;
     choicesPrevious.textContent =
       'SUCCESS - You CLIMB the nearest tree, and it does not take long for the animal to approach!';
