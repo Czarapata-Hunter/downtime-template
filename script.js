@@ -384,7 +384,7 @@ btnCrouch.addEventListener('click', function () {
   if (dice > 4) {
     successCount++;
     choicesPrevious.classList.add('success');
-    choicesPrevious.textContent = `SUCCESS - You CROUCH your way forward, and you see the ${animal}! Are you skilled enough to get the kill?`;
+    choicesPrevious.textContent = `SUCCESS - You CROUCH your way forward and see the ${animal}! Are you skilled enough to get the kill?`;
     choicesPrompt.classList.add('hidden');
   } else {
     failCount++;
@@ -438,7 +438,7 @@ btnShoot.addEventListener('click', function () {
     btnShoot.classList.add('hidden');
   } else if (dice > 15) {
     choicesPrevious.classList.add('success');
-    choicesPrevious.textContent = `Your is aim true, and you successfully kill the ${animal}!`;
+    choicesPrevious.textContent = `Your aim is true, and you successfully kill the ${animal}!`;
     carcass = animal;
     btnShoot.classList.add('hidden');
     overlay.classList.add('hidden');
@@ -446,7 +446,7 @@ btnShoot.addEventListener('click', function () {
     console.log(carcass);
   } else if (dice > 1) {
     choicesPrevious.classList.add('failure');
-    choicesPrevious.textContent = `You hit the ${animal}, but it is not enough to get a clean kill! Take a shot before it disappears!`;
+    choicesPrevious.textContent = `You hit the ${animal}, but it is not enough to get a clean kill! Take another shot before it disappears!`;
     btnShoot.classList.add('hidden');
     btnShootAgain.classList.remove('hidden');
   } else {
@@ -494,7 +494,7 @@ btnShootAgain.addEventListener('click', function () {
     console.log(carcass);
   } else {
     choicesPrevious.classList.add('failure');
-    choicesPrevious.textContent = `Unfortunately, your second shot misses and the ${animal} escapes. No meat today for you.`;
+    choicesPrevious.textContent = `Unfortunately, your second shot misses and the ${animal} escapes. No successful hunt today.`;
     btnShootAgain.classList.add('hidden');
     overlay.classList.add('hidden');
     displayedAnimal.classList.add('hidden');
