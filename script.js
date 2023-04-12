@@ -53,9 +53,33 @@ const reset = () => {
   playing = true;
   animal = '';
   displayedAnimal.classList.add('hidden');
+  choicesPrevious.classList.add('hidden');
+  choicesPrompt.classList.add('hidden');
+  choicesPrevious.textContent = '';
+  choicesPrompt.textContent = '';
+  body.style.backgroundImage = "url('/Photos/backgrounds/beginHunt.jpg')";
+  btnShoot.classList.add('hidden');
+  btnShootAgain.classList.add('hidden');
+  btnLeft.classList.add('hidden');
+  btnRight.classList.add('hidden');
+  btnUp.classList.add('hidden');
+  btnDown.classList.add('hidden');
+  btnRiver.classList.add('hidden');
+  btnMtn.classList.add('hidden');
+  btnFast.classList.add('hidden');
+  btnSlow.classList.add('hidden');
+  btnCrouch.classList.add('hidden');
+  btnClimb.classList.add('hidden');
+  btnCapture.classList.add('hidden');
+  btnKill.classList.add('hidden');
+  btnStart.classList.remove('hidden');
 };
 
 reset();
+
+btnReset.addEventListener('click', function () {
+  reset();
+});
 
 //RULES
 btnRules.addEventListener('click', function () {
@@ -69,7 +93,9 @@ const closeRules = () => {
 };
 
 overlay.addEventListener('click', function () {
-  closeRules();
+  if (!modal.classList.contains('hidden')) {
+    closeRules();
+  }
 });
 
 document.addEventListener('keydown', function (e) {
@@ -372,9 +398,12 @@ btnCrouch.addEventListener('click', function () {
 // CLIMB
 btnClimb.addEventListener('click', function () {
   const dice = Math.ceil(Math.random() * 5);
-  body.style.backgroundImage = "url('/Photos/backgrounds/high.jpg')";
   giveAnimal();
   successFailStyle();
+  body.style.backgroundImage = "url('/Photos/backgrounds/high.jpg')";
+  overlay.classList.remove('hidden');
+  displayedAnimal.classList.remove('hidden');
+  displayedAnimal.src = `/Photos/animals/${animal}.png`;
 
   if (dice > 4) {
     successCount++;
@@ -417,7 +446,29 @@ btnShoot.addEventListener('click', function () {
     choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `CRITICAL FAILURE! - You miss by more than you care to admit, and the ${animal} immediately leaves before you can even react.`;
     btnShoot.classList.add('hidden');
+
+    overlay.classList.add('hidden');
+    displayedAnimal.classList.add('hidden');
   }
+});
+
+// CRIT HIT
+// CAPTURE
+btnCapture.addEventListener('click', function () {
+  btnCapture.classList.add('hidden');
+  btnKill.classList.add('hidden');
+  choicesPrevious.textContent = `You successfully capture the ${animal}! It's wounds will need to be tended to if it is to survive!`;
+  overlay.classList.add('hidden');
+  displayedAnimal.classList.add('hidden');
+});
+
+//KILL
+btnKill.addEventListener('click', function () {
+  btnCapture.classList.add('hidden');
+  btnKill.classList.add('hidden');
+  choicesPrevious.textContent = `Your arrow passes clean through the ${animal}, killing it immediately`;
+  overlay.classList.add('hidden');
+  displayedAnimal.classList.add('hidden');
 });
 
 // SHOOT 2nd
@@ -429,9 +480,13 @@ btnShootAgain.addEventListener('click', function () {
     choicesPrevious.classList.add('success');
     choicesPrevious.textContent = `Success! You manage to hit the ${animal} as it sprints away, dropping it immediately.`;
     btnShootAgain.classList.add('hidden');
+    overlay.classList.add('hidden');
+    displayedAnimal.classList.add('hidden');
   } else {
     choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `Unfortunately, your second shot misses and the ${animal} escapes. No meat today for you.`;
     btnShootAgain.classList.add('hidden');
+    overlay.classList.add('hidden');
+    displayedAnimal.classList.add('hidden');
   }
 });
