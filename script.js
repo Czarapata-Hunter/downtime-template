@@ -33,7 +33,7 @@ const overlay = document.querySelector('.overlay');
 //PICTURES
 
 //SETUP
-let successCount, failCount, playing, rewardsArray, animal; // <= NamingChange
+let successCount, failCount, playing, rewardsArray, animal, carcass; // <= NamingChange
 
 const tiny = ['Rat', 'Frog', 'Lizard', 'Weasel', 'Mouse'];
 
@@ -52,8 +52,10 @@ const reset = () => {
   rewardsArray = [];
   playing = true;
   animal = '';
+  carcass = '';
   displayedAnimal.classList.add('hidden');
   choicesPrevious.classList.add('hidden');
+  choicesPrevious.classList.remove('critical');
   choicesPrompt.classList.add('hidden');
   choicesPrevious.textContent = '';
   choicesPrompt.textContent = '';
@@ -73,6 +75,7 @@ const reset = () => {
   btnCapture.classList.add('hidden');
   btnKill.classList.add('hidden');
   btnStart.classList.remove('hidden');
+  overlay.classList.add('hidden');
 };
 
 reset();
@@ -436,7 +439,11 @@ btnShoot.addEventListener('click', function () {
   } else if (dice > 15) {
     choicesPrevious.classList.add('success');
     choicesPrevious.textContent = `Your is aim true, and you successfully kill the ${animal}!`;
+    carcass = animal;
     btnShoot.classList.add('hidden');
+    overlay.classList.add('hidden');
+    displayedAnimal.classList.add('hidden');
+    console.log(carcass);
   } else if (dice > 1) {
     choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `You hit the ${animal}, but it is not enough to get a clean kill! Take a shot before it disappears!`;
@@ -466,6 +473,7 @@ btnCapture.addEventListener('click', function () {
 btnKill.addEventListener('click', function () {
   btnCapture.classList.add('hidden');
   btnKill.classList.add('hidden');
+  carcass = animal;
   choicesPrevious.textContent = `Your arrow passes clean through the ${animal}, killing it immediately`;
   overlay.classList.add('hidden');
   displayedAnimal.classList.add('hidden');
@@ -480,8 +488,10 @@ btnShootAgain.addEventListener('click', function () {
     choicesPrevious.classList.add('success');
     choicesPrevious.textContent = `Success! You manage to hit the ${animal} as it sprints away, dropping it immediately.`;
     btnShootAgain.classList.add('hidden');
+    carcass = animal;
     overlay.classList.add('hidden');
     displayedAnimal.classList.add('hidden');
+    console.log(carcass);
   } else {
     choicesPrevious.classList.add('failure');
     choicesPrevious.textContent = `Unfortunately, your second shot misses and the ${animal} escapes. No meat today for you.`;
